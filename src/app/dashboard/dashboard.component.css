@@ -1,0 +1,310 @@
+/*font-size: 0.9vw;*/
+.board {
+  overflow: visible;
+  display: grid;
+  margin-top: 90px;
+  grid-template-rows: 1px 16.7vw 19.7vw 1px;
+  grid-template-columns: 1px 1fr 2fr 11fr 10fr 1px;
+  grid-gap: 1.2vw;
+  grid-template-areas:
+        "x x x x x x"
+        "z f f f v y"
+        "z g g g g y"
+        "h h h h h h";
+  margin-inline: 10%;
+  /*background: rgba(0, 0, 0, .5);*/
+  background: var(--navc);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+  /*background-color: var(--navc);*/
+}
+
+.stats {
+  grid-area: v;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.stats p {
+  margin-top: 5%;
+}
+
+.gap {
+  font-size: 3px;
+  color: rgb(0, 0, 0, 0);
+}
+
+.step {
+
+}
+
+.formArea {
+  grid-area: f;
+}
+
+
+.formArea form {
+  display: grid;
+  grid-template-areas:
+    "x"
+    "f"
+    "s"
+    "t"
+    "c"
+    "a"
+    "b";
+  grid-template-rows: 1px repeat(6,2.1vw) 3.15vw;
+  grid-gap: 0.5vw;
+
+}
+
+
+.fst {
+  grid-area: f;
+}
+
+.snd {
+  grid-area: s;
+}
+
+.thd {
+  grid-area: t;
+}
+
+.custom {
+  grid-area: c;
+}
+
+.annotation {
+  margin-top: 0.5vw;
+  grid-area: a;
+}
+
+.form-buttons {
+  grid-area: b;
+  display: flex;
+}
+
+
+.choiceElement {
+  display: grid;
+  grid-template-areas: "r a t s";
+  grid-template-columns: 1.78vw 5vw 26vw 1fr;
+  grid-gap: 0.7vw;
+}
+
+
+.choiceElement input[type="radio"] {
+  grid-area: r;
+  margin-left: 0.5vw;
+}
+
+.choiceElement label {
+  grid-area: a;
+  align-self: center;
+}
+
+
+.choiceElement p {
+  align-self: center;
+  grid-area: t;
+}
+
+
+/*Check*/
+.formArea .form-buttons .button {
+  position: relative;
+  display: inline-block;
+  padding: 10px 10px;
+  overflow: hidden;
+  transition: .5s;
+}
+
+
+.formArea input[type="text"] {
+  color: #fff;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  transition: 0.35s;
+}
+
+.formArea input[type="text"]:focus, .formArea input[type="text"]:not(:placeholder-shown) {
+  border-color: var(--acc);
+}
+
+.formArea .ng-invalid input[type="text"]:not(:placeholder-shown) {
+  color: #ff5b5b;
+  border-color: #ff5b5b;
+  transition: 0.35s;
+}
+/*angular animation?*/
+.errorMsg{
+  color: #ff5b5b;
+}
+
+.button label {
+  color: var(--acc);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 2px;
+  transition: .5s;
+  text-decoration: none;
+}
+
+button {
+  color: var(--acc);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 2px;
+  transition: .5s;
+  text-decoration: none;
+}
+
+.formArea form .form-buttons .button:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+  0 0 25px #03e9f4,
+  0 0 50px #03e9f4,
+  0 0 100px #03e9f4;
+}
+
+.button:hover label {
+  color: #fff;
+}
+
+
+.formArea form .form-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.submit{
+  align-self: flex-start;
+}
+.formArea form .form-buttons .button {
+  border: none;
+  background-color: transparent;
+}
+
+button[class="button"] {
+  margin-left: auto
+}
+
+input[type="radio"] {
+  accent-color: var(--acc);
+  width: 1.2vw;
+}
+
+.proc-canvas {
+  grid-area: g;
+  padding-left: 0.5%;
+  background: var(--secbg);
+}
+
+.header-row {
+  height: 2vw;
+}
+
+
+th {
+  font-weight: 400;
+}
+
+
+.algo-name {
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.proc-annotation {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0);
+}
+
+.step {
+  text-align: left;
+}
+
+.algo-name {
+  margin-left: 1vw;
+  margin-top: 1vw;
+}
+
+.proc-cols {
+  width: 2%;
+}
+
+.row-num {
+  text-align: center;
+}
+
+.proc-pair {
+  text-align: center;
+}
+
+.row-num, .proc-pair, proc-name {
+  font-size: 14px;
+}
+
+.empty {
+  background: lightslategray;
+}
+
+.cell {
+  text-align: center;
+}
+
+.oom {
+  background: #2f2d2d;
+  text-align: center;
+}
+
+.hidden, hidden * {
+  opacity: 0;
+}
+
+
+.A {
+  background: #744FC6;
+}
+
+.B {
+  background: #F25757;
+}
+
+.C {
+  background: #CE7B91;
+}
+
+.D {
+  background: #A9D8B8;
+}
+
+.E {
+  background: cornflowerblue;
+}
+
+.F {
+  background: #F4978E;
+}
+
+.G {
+  background: #d0c967;
+}
+
+.H {
+  background: #d069d0;
+}
+
+.I {
+  background: #10b4b4;
+}
+
+.J {
+  background: #ce489c;
+}

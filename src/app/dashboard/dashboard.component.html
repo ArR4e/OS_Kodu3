@@ -1,0 +1,70 @@
+<div class="board">
+  <div class="formArea">
+    <h4 class="help">Vali või sisesta järjend kujul ("A,2;B,3;A,-;C,4;B,+3;D,5;E,15;C,-;F,5"). MAX 10 faili</h4>
+    <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
+      <div class="fst choiceElement">
+        <input type="radio" id="fst" [value]="fstTxt" name="inputChoice" formControlName="inputChoice" required/>
+        <label for="fst">Esimene</label>
+        <p>{{fstTxt}}</p>
+      </div>
+      <div class="snd choiceElement">
+        <input type="radio" id="snd" [value]="sndTxt" name="inputChoice" formControlName="inputChoice" required/>
+        <label for="snd">Teine</label>
+        <p>{{sndTxt}}</p>
+      </div>
+      <div class="thd choiceElement">
+        <input type="radio" id="thd" [value]="thdTxt" name="inputChoice" formControlName="inputChoice" required/>
+        <label for="thd">Kolmas</label>
+        <p>{{thdTxt}}</p>
+      </div>
+
+      <div class="custom choiceElement choiceElementCustom">
+        <input type="radio" id="custom" [value]="customInput" name="inputChoice" formControlName="inputChoice"
+               required/>
+        <label for="custom">Enda oma</label>
+        <input type="text" placeholder="&nbsp;" name="text" [(ngModel)]="customInput" formControlName="inputChoice">
+
+      </div>
+      <p class="annotation">
+       <span class="errorMsg" *ngIf="requestForm.touched && requestForm.invalid; else active">
+          Muster ei vasta antud kujule
+       </span>
+        <ng-template #active>Algoritmi käivitamiseks klõpsa nupule</ng-template>
+      </p>
+      <div class="form-buttons">
+        <button class="button unselectable submit" type="submit" [disabled]="!requestForm.valid">Käivita</button>
+        <button class="button unselectable" type="button" (click)="onReset()">Puhasta väljund</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="stats" *ngIf="steps.length">
+    <p>Alles jäänud failidest on fragmenteerunud: {{fragmentedFiles | percent: '.0-2'}}.
+      Fragmeeturunud failidele kuulub {{fragmentationPercent | percent: '.0-2'}} kasutatud ruumist.</p>
+  </div>
+
+  <div [className]="procsd">
+    <ng-container *ngIf="steps.length">
+      <table class="proc-table">
+        <tr class="header-row">
+          <th class="proc-annotation">Sammx10</th>
+          <th class="proc-cols" *ngFor="let i of cols">{{i}}</th>
+        </tr>
+        <ng-container *ngFor="let step of steps; let idx = index">
+          <tr class="proc-row">
+            <td class="step">{{"Samm " + (idx + 1)}}</td>
+            <ng-container *ngIf="step.length; else oom">
+              <td *ngFor="let cell of step" [className]="'cell '+colourMapper[cell]">{{cell}}</td>
+            </ng-container>
+            <ng-template #oom>
+              <td class="oom proc-row" colspan="50">Fail ei mahu mällu</td>
+            </ng-template>
+          </tr>
+          <tr>
+            <td colspan="53" class="gap">gap</td>
+          </tr>
+        </ng-container>
+      </table>
+    </ng-container>
+  </div>
+</div>

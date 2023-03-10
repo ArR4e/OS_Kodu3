@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "faili-haldus": {
+      "hosting": {
+        "faili-haldus": [
+          "faili-haldus"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "faili-haldus"
+  }
+}
